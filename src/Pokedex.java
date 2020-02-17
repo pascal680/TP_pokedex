@@ -8,10 +8,26 @@ public class Pokedex {
     }
 
     public boolean ajouter(Pokemon pokemon) {
-        if (pokemons[pokemon.getNumero()] != null)
+        if (rechercher(pokemon.getNumero()) != null)
             return false; // Erreur: Pokemon deja ajoute.
 
         pokemons[pokemon.getNumero()] = pokemon;
+        return true;
+    }
+
+    public boolean ajouterEvolution(Pokemon pokemon, Pokemon formeSuivante) {
+        Pokemon p1 = rechercher(pokemon.getNumero());
+        if (p1 == null)
+            return false; // Erreur: Pokemon inconnu.
+
+        Pokemon p2 = rechercher(formeSuivante.getNumero());
+        if (p2 == null) {
+            ajouter(formeSuivante);
+            p2 = formeSuivante;
+        }
+
+        p1.setFormeSuivante(p2);
+        p2.setFormePrecedente(p1);
         return true;
     }
 

@@ -74,13 +74,8 @@ public class Main {
         Pokemon p2 = new Pokemon("Wartortle", 8, 15);
         Pokemon p3 = new Pokemon("Blastoise", 9, 15);
 
-        p1.setFormeSuivante(p2);
-        p2.setFormePrecedente(p1);
-        p2.setFormeSuivante(p3);
-        p3.setFormePrecedente(p2);
-
         dex.ajouter(p1);
-        dex.ajouter(p2);
-        dex.ajouter(p3);
+        dex.ajouterEvolution(p1, p2);
+        dex.ajouterEvolution(p2, p3);
     }
 }
