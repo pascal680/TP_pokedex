@@ -11,8 +11,8 @@ public class TableType {
         // TODO Version temporaire, a completer si vous voulez...
         int[] faiblesses = new int[3];
         faiblesses[0] = (idType + 1) % types.length;
-        faiblesses[0] = (idType + 3) % types.length;
-        faiblesses[0] = (idType + 5) % types.length;
+        faiblesses[1] = (idType + 3) % types.length;
+        faiblesses[2] = (idType + 6) % types.length;
         return faiblesses;
     }
 }
