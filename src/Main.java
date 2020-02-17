@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 public class Main {
-
     private static Pokedex dex;
 
     public static void afficherMenu() {
@@ -17,6 +16,7 @@ public class Main {
     public static void main(String[] args) {
         dex = new Pokedex("Kanto", 151);
         ajouterPokemon();
+
         // Variables que l'on va reutiliser souvent.
         Pokemon p;
         String nom;
@@ -30,8 +30,8 @@ public class Main {
             afficherMenu();
             entree = scan.nextLine();
             requete = entree.charAt(0);
-            switch(requete)
-            {
+            switch(requete) {
+
                 case 'a':
                     System.out.print("Entrez son nom: ");
                     nom = scan.next();
@@ -52,6 +52,7 @@ public class Main {
                     else
                         System.err.println("Impossible d'ajouter " + p);
                     break;
+
                 case 'c':
                     numero = Integer.parseInt(entree.substring(2));
                     p = dex.rechercher(numero);
@@ -60,15 +61,18 @@ public class Main {
                     else
                         System.out.println(p);
                     break;
+
                 case 'e':
                     numero = Integer.parseInt(entree.substring(2));
                     p = dex.rechercher(numero);
                     System.out.print(p.getNom() + " evolue en ");
                     System.out.println(p.getFormeSuivante().getNom());
                     break;
+
                 case 'q':
                     System.out.println("Gotta catch them all!");
                     break;
+
                 default:
                     System.err.println("Option invalide: " + requete);
             }
