@@ -43,7 +43,8 @@ public class Pokemon {
 
     public String toString() {
         String str = nom + " #" + numero;
-        str += "(" + (type2 > 0 ? "/" + type2 : "") + ")";
+        str += "(" + TableType.getType(type1);
+        str += (type2 > 0 ? "/" + TableType.getType(type2) : "") + ")";
         return str;
     }
 }
