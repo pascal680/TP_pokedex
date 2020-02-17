@@ -8,8 +8,8 @@ public class Main {
                 "a: ajout d'un pokemon \n"+
                 "c #: consulter la page d'un pokemon \n"+
                 "e #: voir l'evolution \n"+
-                "r: rechercher par nom \n"+
-                "t: rechercher par type \n"+
+                "r <nom>: rechercher par nom \n"+
+                "t <type>: rechercher par type \n"+
                 "q: quitter");
     }
 
@@ -21,7 +21,7 @@ public class Main {
         Pokemon p;
         String nom;
         int numero;
-        int type1, type2;
+        int type;
 
         char requete;
         String entree;
@@ -38,15 +38,14 @@ public class Main {
                     System.out.print("Entrez son numero: ");
                     numero = scan.nextInt();
                     System.out.print("Entrez son premier type: ");
-                    type1 = scan.nextInt();
+                    type = scan.nextInt();
                     System.out.print("Entrez son deuxieme type (ou laissez vide): ");
                     scan.nextLine(); // Il faut d'abord se debarasser du \n restant sur l'entree apres nextInt.
                     String next = scan.nextLine();
                     if (next.isEmpty())
-                        type2 = 0;
+                        p = new Pokemon(nom, numero, type);
                     else
-                        type2 = Integer.parseInt(next);
-                    p = new Pokemon(nom, numero, type1, type2);
+                        p = new Pokemon(nom, numero, type, Integer.parseInt(next));
                     if(dex.ajouter(p))
                         System.out.println(p + " ajoute!");
                     else
