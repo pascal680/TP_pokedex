@@ -5,6 +5,7 @@ public class Pokedex {
     public Pokedex(String region, int nbPokemons) {
         this.region = region;
         this.pokemons = new Pokemon[nbPokemons + 1]; // '+1' pour reserver l'index 0
+        ajouter(new Pokemon("MissingNo", 0, 0));
     }
 
     public boolean ajouter(Pokemon pokemon) {
