@@ -1,0 +1,5 @@
+Exercice intégrateur Git
+
+On vous fourni le code de base d'un Pokédex simple, qui vous permettra de documenter les pokémons que vous croiserez lors de vos aventures au cégep. Mais avant de partir pour tous les attraper, vous devrez apporter 3 séries de modifications à l'application.
+
+Pour simuler une situation plus réaliste, on vous demande de travailler sur trois branches:
