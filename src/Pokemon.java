@@ -1,3 +1,5 @@
+import java.net.PortUnreachableException;
+
 public class Pokemon {
     private String nom;
     private int numero;
@@ -23,9 +25,25 @@ public class Pokemon {
         return numero;
     }
 
+    public Pokemon getFormePrecedente() {
+        return formePrecedente;
+    }
+
+    public void setFormePrecedente(Pokemon preEvolution) {
+        this.formePrecedente = preEvolution;
+    }
+
+    public Pokemon getFormeSuivante() {
+        return formeSuivante;
+    }
+
+    public void setFormeSuivante(Pokemon evolution) {
+        this.formeSuivante = evolution;
+    }
+
     public String toString() {
         String str = nom + " #" + numero;
-        str += "(" + type1 + "+" + type2 + ")";
+        str += "(" + (type2 > 0 ? "/" + type2 : "") + ")";
         return str;
     }
 }
