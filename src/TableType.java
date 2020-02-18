@@ -8,7 +8,7 @@ public class TableType {
         return TYPES[idType];
     }
 
-    public int[] getFaiblesses(int idType) {
+    public static int[] getFaiblesses(int idType) {
         //TODO Version temporaire, a completer si vous voulez...
         int[] faiblesses = new int[3];
         faiblesses[0] = (idType + 1) % TYPES.length;
