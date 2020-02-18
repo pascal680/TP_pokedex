@@ -3,13 +3,13 @@ import java.util.Scanner;
 public class Main {
     private static Pokedex dex;
 
-    public static void afficherMenu() {
-        System.out.println("================ \n"+
-                "a: ajout d'un pokemon \n"+
-                "c #: consulter la page d'un pokemon \n"+
-                "e #: voir l'evolution \n"+
-                "r <nom>: rechercher par nom \n"+
-                "t <type>: rechercher par type \n"+
+    private static void afficherMenu() {
+        System.out.println("================ \n" +
+                "a: ajout d'un pokemon \n" +
+                "c #: consulter la page d'un pokemon \n" +
+                "e #: voir l'evolution \n" +
+                "r <nom>: rechercher par nom \n" +
+                "t <type>: rechercher par type \n" +
                 "q: quitter");
     }
 
@@ -28,9 +28,10 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         do {
             afficherMenu();
-            entree = scan.nextLine();
+            entree = scan.next();
             requete = entree.charAt(0);
-            switch(requete) {
+            entree += scan.nextLine();
+            switch (requete) {
 
                 case 'a':
                     System.out.print("Entrez son nom: ");
@@ -43,13 +44,13 @@ public class Main {
                     scan.nextLine(); // Il faut d'abord se debarasser du \n restant sur l'entree apres nextInt.
                     String next = scan.nextLine();
                     if (next.isEmpty())
-                        p = new Pokemon(nom, numero, type);
+                        p = dex.ajouter(nom, numero, type);
                     else
-                        p = new Pokemon(nom, numero, type, Integer.parseInt(next));
-                    if(dex.ajouter(p))
+                        p = dex.ajouter(nom, numero, type, Integer.parseInt(next));
+                    if (p != null)
                         System.out.println(p + " ajoute!");
                     else
-                        System.err.println("Impossible d'ajouter " + p);
+                        System.err.println("Impossible d'ajouter #" + numero);
                     break;
 
                 case 'c':
@@ -79,16 +80,12 @@ public class Main {
     }
 
     private static void ajouterPokemon() {
-        dex.ajouter(new Pokemon("Bulbasaur", 1, 8, 12));
-        dex.ajouter(new Pokemon("Charmander", 4, 6));
-        // TODO Ajoutez votre pokemon prefere ici.
+        dex.ajouter("Bulbasaur", 1, 8, 12);
+        dex.ajouter("Charmander", 4, 6);
+        //TODO Ajouter votre pokemon prefere ici.
 
-        Pokemon p1 = new Pokemon("Squirtle", 7, 15);
-        Pokemon p2 = new Pokemon("Wartortle", 8, 15);
-        Pokemon p3 = new Pokemon("Blastoise", 9, 15);
-
-        dex.ajouter(p1);
-        dex.ajouterEvolution(p1, p2);
-        dex.ajouterEvolution(p2, p3);
+        Pokemon p1 = dex.ajouter("Squirtle", 7, 15);
+        Pokemon p2 = dex.ajouterEvolution(p1, "Wartortle", 8, 15);
+        Pokemon p3 = dex.ajouterEvolution(p2, "Blastoise", 9, 15);
     }
 }

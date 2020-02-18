@@ -1,6 +1,8 @@
 import java.net.PortUnreachableException;
 
 public class Pokemon {
+    public final static int NO_TYPE = 0;
+
     private String nom;
     private int numero;
     private int type1, type2;
@@ -14,7 +16,7 @@ public class Pokemon {
     }
 
     public Pokemon(String nom, int numero, int type1) {
-        this(nom, numero, type1, 0);
+        this(nom, numero, type1, NO_TYPE);
     }
 
     public String getNom() {
