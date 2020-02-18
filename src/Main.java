@@ -30,7 +30,6 @@ public class Main {
             afficherMenu();
             entree = scan.next();
             requete = entree.charAt(0);
-            entree += scan.nextLine();
             switch (requete) {
 
                 case 'a':
@@ -42,11 +41,11 @@ public class Main {
                     type = scan.nextInt();
                     System.out.print("Entrez son deuxieme type (ou laissez vide): ");
                     scan.nextLine(); // Il faut d'abord se debarasser du \n restant sur l'entree apres nextInt.
-                    String next = scan.nextLine();
-                    if (next.isEmpty())
+                    entree = scan.nextLine();
+                    if (entree.isEmpty())
                         p = dex.ajouter(nom, numero, type);
                     else
-                        p = dex.ajouter(nom, numero, type, Integer.parseInt(next));
+                        p = dex.ajouter(nom, numero, type, Integer.parseInt(entree));
                     if (p != null)
                         System.out.println(p + " ajoute!");
                     else
@@ -54,7 +53,7 @@ public class Main {
                     break;
 
                 case 'c':
-                    numero = Integer.parseInt(entree.substring(2));
+                    numero = scan.nextInt();
                     p = dex.rechercher(numero);
                     if (p == null)
                         System.out.println("<inconnu>");
@@ -63,7 +62,7 @@ public class Main {
                     break;
 
                 case 'e':
-                    numero = Integer.parseInt(entree.substring(2));
+                    numero = scan.nextInt();
                     p = dex.rechercher(numero);
                     System.out.print(p.getNom() + " evolue en ");
                     System.out.println(p.getFormeSuivante().getNom());
