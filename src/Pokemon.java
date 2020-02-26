@@ -1,5 +1,5 @@
 public class Pokemon {
-    public final static int SANS_TYPE = 0;
+    private final static int SANS_TYPE = 0;
 
     private String nom;
     private int numero;

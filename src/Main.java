@@ -7,7 +7,7 @@ public class Main {
         System.out.println("================ \n" +
                 "a: ajout d'un pokemon \n" +
                 "c #: consulter la page d'un pokemon \n" +
-                "e #: voir l'evolution \n" +
+                "e #: voir l'evolution d'un pokemon \n" +
                 "r <nom>: rechercher par nom \n" +
                 "t <type>: rechercher par type \n" +
                 "q: quitter");
@@ -21,7 +21,7 @@ public class Main {
         Pokemon p;
         String nom;
         int numero;
-        int type;
+        String type;
 
         char requete;
         String entree;
@@ -37,15 +37,15 @@ public class Main {
                     nom = scan.next();
                     System.out.print("Entrez son numero: ");
                     numero = scan.nextInt();
-                    System.out.print("Entrez son premier type: ");
-                    type = scan.nextInt();
-                    System.out.print("Entrez son deuxieme type (ou laissez vide): ");
                     scan.nextLine(); // Il faut d'abord se debarasser du \n restant sur l'entree apres nextInt.
+                    System.out.print("Entrez son premier type: ");
+                    type = scan.nextLine();
+                    System.out.print("Entrez son deuxieme type (ou laissez vide): ");
                     entree = scan.nextLine();
                     if (entree.isEmpty())
                         p = dex.ajouter(nom, numero, type);
                     else
-                        p = dex.ajouter(nom, numero, type, Integer.parseInt(entree));
+                        p = dex.ajouter(nom, numero, type, entree);
                     if (p != null)
                         System.out.println(p + " ajoute!");
                     else
@@ -79,13 +79,13 @@ public class Main {
     }
 
     private static void ajouterPokemonsConnus() {
-        dex.ajouter("Bulbasaur", 1, 9, 10);
-        dex.ajouter("Charmander", 4, 5);
+        dex.ajouter("Bulbasaur", 1, "Plante", "Poison");
+        dex.ajouter("Charmander", 4, "Feu");
         //TODO Ajoutez votre pokemon prefere ici.
         // Au besoin, consultez la liste officielle sur https://pokedex.org/
 
-        Pokemon p1 = dex.ajouter("Squirtle", 7, 3);
-        Pokemon p2 = dex.ajouterEvolution(p1, "Wartortle", 8, 3);
-        Pokemon p3 = dex.ajouterEvolution(p2, "Blastoise", 9, 3);
+        Pokemon p1 = dex.ajouter("Squirtle", 7, "Eau");
+        Pokemon p2 = dex.ajouterEvolution(p1, "Wartortle", 8, "Eau");
+        Pokemon p3 = dex.ajouterEvolution(p2, "Blastoise", 9, "Eau");
     }
 }
