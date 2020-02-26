@@ -7,6 +7,13 @@ public class Test {
 
         if (t.testAjouter() || t.testAjouterEvolution()) {
             System.out.println("Tests d'ajout echoues!");
+            // Conseil: Utilisez le debogueur pour cibler quel test echoue.
+            return;
+        }
+
+        if (t.testRechercher()) {
+            System.out.println("Tests de recherche echoues!");
+            // Conseil: Ajoutez des tests pour la recherche par nom et par type ici.
             return;
         }
 
@@ -18,24 +25,46 @@ public class Test {
     }
 
     public boolean testAjouter() {
-        if (dex.ajouter("Bulbasaur", 1, "Plante", "Poison") == null)
-            return true;
-        if (dex.ajouter("Squirtle", 7, "Eau") == null)
-            return true;
-        p = dex.ajouter("Charmander", 4, "Feu");
+        p = dex.ajouter("Bulbasaur", 1, "Plante", "Poison");
         if (p == null)
             return true;
+
+        p = dex.ajouter("Squirtle", 7, "Eau");
+        if (p == null || p.getNom() != "Squirtle")
+            return true;
+
+        p = dex.ajouter("Charmander", 4, "Feu");
+        if (p == null || p.getNumero() != 4)
+            return true;
+
         return false;
     }
 
     public boolean testAjouterEvolution() {
-        p = dex.ajouterEvolution(p, "Charmeleon", 5, "Feu");
-        if (p == null)
+        Pokemon p2 = dex.ajouterEvolution(p, "Charmeleon", 5, "Feu");
+        if (p2 == null || p2.getNumero() != 5)
             return true;
-        p = dex.ajouterEvolution(p, "Charizard", 6, "Feu", "Vol");
-        if (p == null)
+
+        p = dex.ajouterEvolution(p2, "Charizard", 6, "Feu", "Vol");
+        if (p == null || p2.getEvolution() != p)
             return true;
+
         return false;
     }
-    
+
+    public boolean testRechercher() {
+        p = dex.rechercher(1);
+        if (p == null || p.getNom() != "Bulbasaur")
+            return true;
+
+        p = dex.rechercher(7);
+        if (p == null || p.getNumero() != 7)
+            return true;
+
+        p = dex.rechercher(5);
+        if (p == null || p.getNumero() != 5)
+            return true;
+
+        return false;
+    }
 }
