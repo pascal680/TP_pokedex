@@ -15,7 +15,7 @@ public class Main {
 
     public static void main(String[] args) {
         dex = new Pokedex("Kanto", 151);
-        ajouterPokemon();
+        ajouterPokemonsConnus();
 
         // Variables que l'on va reutiliser souvent.
         Pokemon p;
@@ -78,13 +78,14 @@ public class Main {
         } while (requete != 'q');
     }
 
-    private static void ajouterPokemon() {
-        dex.ajouter("Bulbasaur", 1, 8, 12);
-        dex.ajouter("Charmander", 4, 6);
-        //TODO Ajouter votre pokemon prefere ici.
+    private static void ajouterPokemonsConnus() {
+        dex.ajouter("Bulbasaur", 1, 9, 10);
+        dex.ajouter("Charmander", 4, 5);
+        //TODO Ajoutez votre pokemon prefere ici.
+        // Au besoin, consultez la liste officielle sur https://pokedex.org/
 
-        Pokemon p1 = dex.ajouter("Squirtle", 7, 15);
-        Pokemon p2 = dex.ajouterEvolution(p1, "Wartortle", 8, 15);
-        Pokemon p3 = dex.ajouterEvolution(p2, "Blastoise", 9, 15);
+        Pokemon p1 = dex.ajouter("Squirtle", 7, 3);
+        Pokemon p2 = dex.ajouterEvolution(p1, "Wartortle", 8, 3);
+        Pokemon p3 = dex.ajouterEvolution(p2, "Blastoise", 9, 3);
     }
 }
