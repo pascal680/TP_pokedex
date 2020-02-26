@@ -1,3 +1,8 @@
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.util.Scanner;
+
 public class Test {
     private Pokedex dex;
     private Pokemon p;
@@ -8,6 +13,12 @@ public class Test {
         if (t.testAjouter() || t.testAjouterEvolution()) {
             System.out.println("Tests d'ajout echoues!");
             // Conseil: Utilisez le debogueur pour cibler quel test echoue.
+            return;
+        }
+
+        if (t.testAfficher()) {
+            System.out.println("Test d'affichage echoue!");
+            // Conseil: N'oubliez pas que l'affichage doit etre en ordre du numero des pokemons.
             return;
         }
 
@@ -48,6 +59,25 @@ public class Test {
         p = dex.ajouterEvolution(p2, "Charizard", 6, "Feu", "Vol");
         if (p == null || p2.getEvolution() != p)
             return true;
+
+        return false;
+    }
+
+    public boolean testAfficher() {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        dex.afficher(new PrintStream(out));
+
+        int last = -1;
+        Scanner scan = new Scanner(out.toString());
+        while (scan.hasNext()) {
+            String s = scan.next();
+            int num = Integer.parseInt(s.substring(1));
+            if (num > last)
+                last = num;
+            else
+                return true;
+            scan.nextLine();
+        }
 
         return false;
     }

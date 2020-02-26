@@ -1,9 +1,18 @@
+import java.io.PrintStream;
+
 public class Pokedex {
     private Pokemon[] pokemons;
 
     public Pokedex() {
         this.pokemons = new Pokemon[151 + 1]; // Il n'y a que 151 pokemons, non?
-        ajouter("MissingNo", 0, TableType.SANS_TYPE); // On se reserve l'index 0
+        //ajouter("MissingNo", 0, TableType.SANS_TYPE);
+    }
+
+    public void afficher(PrintStream out) {
+        for (Pokemon p : pokemons) {
+            if (p != null)
+                out.println("#" + p.getNumero() + " " + p.getNom());
+        }
     }
 
     public Pokemon rechercher(int numero) {

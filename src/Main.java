@@ -5,7 +5,8 @@ public class Main {
 
     private static void afficherMenu() {
         System.out.println("================ \n" +
-                "a: ajout d'un pokemon \n" +
+                "p: afficher le pokedex \n" +
+                "a: ajouter un pokemon \n" +
                 "c #: consulter la page d'un pokemon \n" +
                 "e #: voir l'evolution d'un pokemon \n" +
                 "r <nom>: rechercher par nom \n" +
@@ -31,6 +32,10 @@ public class Main {
             entree = scan.next();
             requete = entree.charAt(0);
             switch (requete) {
+
+                case 'p':
+                    dex.afficher(System.out);
+                    break;
 
                 case 'a':
                     System.out.print("Entrez son nom: ");
