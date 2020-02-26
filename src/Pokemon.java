@@ -1,22 +1,21 @@
-import java.net.PortUnreachableException;
-
 public class Pokemon {
-    public final static int NO_TYPE = 0;
+    public final static int SANS_TYPE = 0;
 
     private String nom;
     private int numero;
     private int type1, type2;
-    private Pokemon formePrecedente, formeSuivante;
+    private Pokemon evolution;
 
     public Pokemon(String nom, int numero, int type1, int type2) {
         this.nom = nom;
         this.numero  = numero;
         this.type1 = type1;
         this.type2 = type2;
+        this.evolution = null;
     }
 
     public Pokemon(String nom, int numero, int type1) {
-        this(nom, numero, type1, NO_TYPE);
+        this(nom, numero, type1, SANS_TYPE);
     }
 
     public String getNom() {
@@ -27,26 +26,20 @@ public class Pokemon {
         return numero;
     }
 
-    public Pokemon getFormePrecedente() {
-        return formePrecedente;
+    public Pokemon getEvolution() {
+        return evolution;
     }
 
-    public void setFormePrecedente(Pokemon preEvolution) {
-        this.formePrecedente = preEvolution;
-    }
-
-    public Pokemon getFormeSuivante() {
-        return formeSuivante;
-    }
-
-    public void setFormeSuivante(Pokemon evolution) {
-        this.formeSuivante = evolution;
+    public void setEvolution(Pokemon evolution) {
+        this.evolution = evolution;
     }
 
     public String toString() {
         String str = nom + " #" + numero;
         str += " (" + TableType.getType(type1);
-        str += (type2 > 0 ? "/" + TableType.getType(type2) : "") + ")";
+        if (type2 != SANS_TYPE)
+            str += "/" + TableType.getType(type2);
+        str += ")";
         return str;
     }
 }

@@ -3,9 +3,8 @@ public class Pokedex {
     private Pokemon[] pokemons;
 
     public Pokedex(String region, int nbPokemons) {
-        this.region = region;
         this.pokemons = new Pokemon[nbPokemons + 1]; // '+1' pour reserver l'index 0
-        ajouter("MissingNo", 0, Pokemon.NO_TYPE);
+        ajouter("MissingNo", 0, Pokemon.SANS_TYPE);
     }
 
     public Pokemon rechercher(int numero) {
@@ -23,7 +22,7 @@ public class Pokedex {
     }
 
     public Pokemon ajouter(String nom, int numero, int type1) {
-        return ajouter(nom, numero, type1, Pokemon.NO_TYPE);
+        return ajouter(nom, numero, type1, Pokemon.SANS_TYPE);
     }
 
     public Pokemon ajouterEvolution(Pokemon pokemon, String nom, int numero, int type1, int type2) {
@@ -35,12 +34,11 @@ public class Pokedex {
         if (p2 == null)
             return null; // Erreur: Pokemon deja ajoute (on conserve celui existant).
 
-        p1.setFormeSuivante(p2);
-        p2.setFormePrecedente(p1);
+        p1.setEvolution(p2);
         return p2;
     }
 
     public Pokemon ajouterEvolution(Pokemon pokemon, String nom, int numero, int type1) {
-        return ajouterEvolution(pokemon, nom, numero, type1, Pokemon.NO_TYPE);
+        return ajouterEvolution(pokemon, nom, numero, type1, Pokemon.SANS_TYPE);
     }
 }

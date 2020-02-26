@@ -65,7 +65,7 @@ public class Main {
                     numero = scan.nextInt();
                     p = dex.rechercher(numero);
                     System.out.print(p.getNom() + " evolue en ");
-                    System.out.println(p.getFormeSuivante().getNom());
+                    System.out.println(p.getEvolution().getNom());
                     break;
 
                 case 'q':
