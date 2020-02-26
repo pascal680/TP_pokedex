@@ -79,6 +79,7 @@ public class Main {
 
                 default:
                     System.err.println("Option invalide: " + requete);
+                    scan.nextLine(); // Reset l'entree.
             }
         } while (requete != 'q');
     }
