@@ -1,10 +1,9 @@
 public class Pokedex {
-    private String region;
     private Pokemon[] pokemons;
 
-    public Pokedex(String region, int nbPokemons) {
-        this.pokemons = new Pokemon[nbPokemons + 1]; // '+1' pour reserver l'index 0
-        ajouter("MissingNo", 0, TableType.SANS_TYPE);
+    public Pokedex() {
+        this.pokemons = new Pokemon[151 + 1]; // Il n'y a que 151 pokemons, non?
+        ajouter("MissingNo", 0, TableType.SANS_TYPE); // On se reserve l'index 0
     }
 
     public Pokemon rechercher(int numero) {

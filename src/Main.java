@@ -14,7 +14,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        dex = new Pokedex("Kanto", 151);
+        dex = new Pokedex();
         ajouterPokemonsConnus();
 
         // Variables que l'on va reutiliser souvent.
