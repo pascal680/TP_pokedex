@@ -34,7 +34,7 @@ public class Main {
             switch (requete) {
 
                 case 'p':
-                    dex.afficher(System.out);
+                    dex.afficher(System.out); // System.out c'est un objet, donc on peut le passer en parametre!
                     break;
 
                 case 'a':
@@ -42,10 +42,10 @@ public class Main {
                     nom = scan.next();
                     System.out.print("Entrez son numero: ");
                     numero = scan.nextInt();
-                    scan.nextLine(); // Il faut d'abord se debarasser du \n restant sur l'entree apres nextInt.
                     System.out.print("Entrez son premier type: ");
-                    type = scan.nextLine();
+                    type = scan.next();
                     System.out.print("Entrez son deuxieme type (ou laissez vide): ");
+                    scan.nextLine(); // Il faut d'abord se debarasser du \n restant sur l'entree apres next().
                     entree = scan.nextLine();
                     if (entree.isEmpty())
                         p = dex.ajouter(nom, numero, type);
