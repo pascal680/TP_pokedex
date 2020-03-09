@@ -59,7 +59,7 @@ public class Main {
 
                 case 'c':
                     numero = scan.nextInt();
-                    p = dex.rechercher(numero);
+                    p = dex.rechercher (numero);
                     if (p == null)
                         System.out.println("<inconnu>");
                     else
@@ -69,8 +69,12 @@ public class Main {
                 case 'e':
                     numero = scan.nextInt();
                     p = dex.rechercher(numero);
+                    Pokemon evolution = p.getEvolution();
                     System.out.print(p.getNom() + " evolue en ");
-                    System.out.println(p.getEvolution().getNom());
+                    if (evolution == null)
+                        System.out.println("rien. " + p.getNom() + " n'a pas d'evolution");
+                    else
+                        System.out.println(p.getEvolution().getNom());
                     break;
 
                 case 'q':
