@@ -26,7 +26,30 @@ public class ListeSimple {
                 nbElements++;
                 return true;
             }
+            current = current.getProchain();
         }
         return false;
+    }
+
+    public Node rechercherNoeud(int numPokemon){
+        current = premier;
+        while(current!= null){
+            if (current.getPokemon().getNumero() == numPokemon){
+                return current;
+            }
+            current = current.getProchain();
+        }
+        return null;
+    }
+
+    public Node rechercherNoeud(String nomPokemon){
+        current = premier;
+        while(current!= null){
+            if (current.getPokemon().getNom().equalsIgnoreCase(nomPokemon)){
+                return current;
+            }
+            current = current.getProchain();
+        }
+        return null;
     }
 }
