@@ -52,4 +52,49 @@ public class ListeSimple {
         }
         return null;
     }
+
+    public Node getElementAt(int index){
+        current = premier;
+        if (index > 0 && index <= nbElements) {
+            for (int i = 0; i <= index; i++) {
+                current = current.getProchain();
+            }
+            return current;
+        }
+        return null;
+    }
+
+    public int getIndexNode(int numPokemon){
+        current = premier;
+        for (int i = 0; i<= nbElements; i++){
+            current = premier;
+            if(rechercherNoeud(numPokemon).equals(current)){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public void supprimerNode(int numPokemon){
+        if(getIndexNode(numPokemon)!= -1) {
+            Node precedent = getElementAt(getIndexNode(numPokemon) - 1);
+            current = getElementAt(getIndexNode(numPokemon));
+            Node prochain = current.getProchain();
+
+            precedent.setProchain(prochain);
+            nbElements--;
+        }
+        else {
+            System.out.println("Il n'y a rien a supprimer a ce numero de Pokemon");
+        }
+    }
+
+
+    public void supprimerNode(String nomPokemon){
+        Node precedent = getElementAt(index-1);
+        current = getElementAt(index);
+        Node prochain = current.getProchain();
+
+        precedent.setProchain(prochain);
+    }
 }
