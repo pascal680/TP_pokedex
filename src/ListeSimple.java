@@ -75,6 +75,17 @@ public class ListeSimple {
         return -1;
     }
 
+    public int getIndexNode(String nomPokemon){
+        current = premier;
+        for (int i = 0; i<= nbElements; i++){
+            current = premier;
+            if(rechercherNoeud(nomPokemon).equals(current)){
+                return i;
+            }
+        }
+        return -1;
+    }
+
     public void supprimerNode(int numPokemon){
         if(getIndexNode(numPokemon)!= -1) {
             Node precedent = getElementAt(getIndexNode(numPokemon) - 1);
@@ -91,10 +102,16 @@ public class ListeSimple {
 
 
     public void supprimerNode(String nomPokemon){
-        Node precedent = getElementAt(index-1);
-        current = getElementAt(index);
-        Node prochain = current.getProchain();
+        if(getIndexNode(nomPokemon)!= -1) {
+            Node precedent = getElementAt(getIndexNode(nomPokemon) - 1);
+            current = getElementAt(getIndexNode(nomPokemon));
+            Node prochain = current.getProchain();
 
-        precedent.setProchain(prochain);
+            precedent.setProchain(prochain);
+            nbElements--;
+        }
+        else {
+            System.out.println("Il n'y a rien a supprimer a ce nom de Pokemon");
+        }
     }
 }
