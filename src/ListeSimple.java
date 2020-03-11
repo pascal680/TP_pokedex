@@ -31,6 +31,14 @@ public class ListeSimple {
         return false;
     }
 
+    public void afficherListe(){
+        current = premier;
+        while (current!= null){
+            System.out.println(current.getPokemon());
+            current = current.getProchain();
+        }
+    }
+
     public Node rechercherNoeud(int numPokemon){
         current = premier;
         while(current!= null){
