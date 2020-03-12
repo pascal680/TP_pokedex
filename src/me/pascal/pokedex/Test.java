@@ -118,4 +118,10 @@ public class Test {
         dex.afficherMemeType("feu");
         return true;
     }
+
+    public boolean testGetFaiblesses(){
+        //un autre test visuel pour que je regarde le resultat pour savoir si c'est bon :)
+        dex.getFaiblesses(p.getNumero());
+        return true;
+    }
 }

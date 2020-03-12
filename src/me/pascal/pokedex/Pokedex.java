@@ -24,8 +24,10 @@ public class Pokedex {
             faiblesses[index] = TableType.getType(fId1[i]);
         }
 
-        for(int i = 0; i < fId2.length; i++, index++) {
-            faiblesses[index] = TableType.getType(fId2[i]);
+        if (fId2[0]!= 0) {
+            for (int i = 0; i < fId2.length; i++, index++) {
+                faiblesses[index] = TableType.getType(fId2[i]);
+            }
         }
 
         return faiblesses;

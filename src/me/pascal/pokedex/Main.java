@@ -84,7 +84,9 @@ public class Main {
                     String[] listeFaiblesses = dex.getFaiblesses(numero);
                     System.out.print("Les faiblesses de  " + dex.pokemons.findByNum(numero).getNom() + " sont : ");
                     for (int i = 0; i<listeFaiblesses.length; i++){
-                        System.out.print(listeFaiblesses[i] + ", ");
+                        if (listeFaiblesses[i] != null) {
+                            System.out.print(listeFaiblesses[i] + ", ");
+                        }
                     }
                     break;
 
