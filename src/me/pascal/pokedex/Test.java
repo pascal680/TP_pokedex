@@ -1,5 +1,6 @@
+package me.pascal.pokedex;
+
 import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
 

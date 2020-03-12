@@ -1,17 +1,14 @@
+package me.pascal.pokedex;
+
 import java.util.Scanner;
 
 public class Main {
     private static Pokedex dex;
 
     private static void afficherMenu() {
-        System.out.println("================ \n" +
-                "p: afficher le pokedex \n" +
-                "a: ajouter un pokemon \n" +
-                "c #: consulter la page d'un pokemon \n" +
-                "e #: voir l'evolution d'un pokemon \n" +
-                "r <nom>: rechercher par nom \n" +
-                "t <type>: rechercher par type \n" +
-                "q: quitter");
+        System.out.println("================ \n" + "p: afficher le pokedex \n" + "a: ajouter un pokemon \n"
+                + "c #: consulter la page d'un pokemon \n" + "e #: voir l'evolution d'un pokemon \n"
+                + "r <nom>: rechercher par nom \n" + "t <type>: rechercher par type \n" + "q: quitter");
     }
 
     public static void main(String[] args) {
@@ -59,7 +56,7 @@ public class Main {
 
                 case 'c':
                     numero = scan.nextInt();
-                    p = dex.rechercher (numero);
+                    p = dex.rechercher(numero);
                     if (p == null)
                         System.out.println("<inconnu>");
                     else
@@ -91,7 +88,7 @@ public class Main {
     private static void ajouterPokemonsConnus() {
         dex.ajouter("Bulbasaur", 1, "Plante", "Poison");
         dex.ajouter("Charmander", 4, "Feu");
-        //TODO Ajoutez votre pokemon prefere ici.
+        // TODO Ajoutez votre pokemon prefere ici.
         // Au besoin, consultez la liste officielle sur https://pokedex.org/
 
         Pokemon p1 = dex.ajouter("Squirtle", 7, "Eau");

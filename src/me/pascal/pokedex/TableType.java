@@ -1,3 +1,5 @@
+package me.pascal.pokedex;
+
 import java.util.Arrays;
 
 public class TableType {

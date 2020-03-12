@@ -1,11 +1,13 @@
+package me.pascal.pokedex;
+
 import java.io.PrintStream;
 
 public class Pokedex {
+
     ListeSimple pokemons;
 
     public Pokedex() {
-        pokemons = new ListeSimple(); // Il n'y a que 151 pokemons, non?
-        //ajouter("MissingNo", 0, TableType.SANS_TYPE);
+        pokemons = new ListeSimple();
     }
 
     public void afficher(PrintStream out) {
@@ -13,17 +15,17 @@ public class Pokedex {
     }
 
     public Pokemon rechercher(int numero) {
-        return pokemons.rechercherNoeud(numero).getPokemon();
+        return pokemons.findByNum(numero);
     }
 
     public Pokemon ajouter(String nom, int numero, String type1, String type2) {
-        Pokemon p = pokemons.rechercherNoeud(numero).getPokemon();
-        if (p != null)
-            return null; // Erreur: Pokemon deja ajoute (on conserve celui existant).
 
-        p = new Pokemon(nom, numero, TableType.getType(type1), TableType.getType(type2));
-        pokemons.addNode(p);
-        return p;
+        if (pokemons.findByNum(numero) != null)
+            return null;
+
+        Pokemon pokemon = new Pokemon(nom, numero, TableType.getType(type1), TableType.getType(type2));
+        pokemons.add(pokemon);
+        return pokemon;
     }
 
     public Pokemon ajouter(String nom, int numero, String type1) {
@@ -31,13 +33,15 @@ public class Pokedex {
     }
 
     public Pokemon ajouterEvolution(Pokemon pokemon, String nom, int numero, String type1, String type2) {
-        Pokemon p1 = pokemons.rechercherNoeud(pokemon.getNumero()).getPokemon();
+        Pokemon p1 = pokemons.findByNum(pokemon.getNumero());
+
         if (p1 == null)
-            return null; // Erreur: On verifie que le pokemon de base existe deja.
+            return null;
 
         Pokemon p2 = ajouter(nom, numero, type1, type2);
+
         if (p2 == null)
-            return null; // Erreur: Pokemon deja ajoute (on conserve celui existant).
+            return null;
 
         p1.setEvolution(p2);
         return p2;

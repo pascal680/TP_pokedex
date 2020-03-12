@@ -1,4 +1,7 @@
+package me.pascal.pokedex;
+
 public class Pokemon {
+
     private final static int SANS_TYPE = 0;
 
     private String nom;
@@ -8,7 +11,7 @@ public class Pokemon {
 
     public Pokemon(String nom, int numero, int type1, int type2) {
         this.nom = nom;
-        this.numero  = numero;
+        this.numero = numero;
         this.type1 = type1;
         this.type2 = type2;
         this.evolution = null;
