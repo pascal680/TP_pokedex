@@ -112,4 +112,10 @@ public class Test {
 
     // Tests a ajouter ========================================================
     // Ajoutez vos propres methodes de test ci-apres.
+
+    public boolean testAfficherMemeType(){
+        //test visuel, le but du test c'est que je regarde le resultat de la fonction
+        dex.afficherMemeType("feu");
+        return true;
+    }
 }

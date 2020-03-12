@@ -8,7 +8,8 @@ public class Main {
     private static void afficherMenu() {
         System.out.println("================ \n" + "p: afficher le pokedex \n" + "a: ajouter un pokemon \n"
                 + "c #: consulter la page d'un pokemon \n" + "e #: voir l'evolution d'un pokemon \n"
-                + "r <nom>: rechercher par nom \n" + "t <type>: rechercher par type \n" + "q: quitter");
+                + "r <nom>: rechercher par nom \n" + "t <type>: rechercher par type \n"+ "f #: voir les faiblesses d'un pokemon \n"
+                + "q: quitter");
     }
 
     public static void main(String[] args) {
@@ -76,6 +77,15 @@ public class Main {
 
                 case 'q':
                     System.out.println("Gotta catch them all!");
+                    break;
+
+                case 'f':
+                    numero = scan.nextInt();
+                    String[] listeFaiblesses = dex.getFaiblesses(numero);
+                    System.out.print("Les faiblesses de  " + dex.pokemons.findByNum(numero).getNom() + " sont : ");
+                    for (int i = 0; i<listeFaiblesses.length; i++){
+                        System.out.print(listeFaiblesses[i] + ", ");
+                    }
                     break;
 
                 default:

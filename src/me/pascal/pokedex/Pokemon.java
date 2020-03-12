@@ -9,6 +9,7 @@ public class Pokemon {
     private int type1, type2;
     private Pokemon evolution;
 
+
     public Pokemon(String nom, int numero, int type1, int type2) {
         this.nom = nom;
         this.numero = numero;
@@ -35,6 +36,14 @@ public class Pokemon {
 
     public void setEvolution(Pokemon evolution) {
         this.evolution = evolution;
+    }
+
+    public int getType1() {
+        return type1;
+    }
+
+    public int getType2() {
+        return type2;
     }
 
     public String toString() {

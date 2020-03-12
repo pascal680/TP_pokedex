@@ -1,5 +1,9 @@
 package me.pascal.pokedex;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Vector;
+
 public class ListeSimple {
 
     private Node premier;
@@ -24,7 +28,8 @@ public class ListeSimple {
                 current.prochain = new Node(pokemon);
                 nbElements++;
                 return true;
-            } else if (pokemon.getNumero() < prochain.pokemon.getNumero()) {
+            }
+            else if (pokemon.getNumero() < prochain.pokemon.getNumero()) {
                 current.prochain = new Node(pokemon, current.prochain);
                 nbElements++;
                 return true;
@@ -122,6 +127,23 @@ public class ListeSimple {
         }
 
         return -1;
+    }
+
+    public ListeSimple getMemeType(String type){
+        int id = TableType.getType(type);
+
+        ListeSimple liste = new ListeSimple();
+
+        Node current = premier;
+
+        while (current != null){
+            if(current.pokemon.getType1() == id)
+                liste.add(current.pokemon);
+            else if(current.pokemon.getType2() == id)
+                liste.add(current.pokemon);
+            current = current.prochain;
+        }
+        return liste;
     }
 
     public Pokemon findByNum(int numPokemon) {
